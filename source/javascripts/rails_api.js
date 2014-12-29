@@ -4,6 +4,7 @@ window.RailsApi = {
   Views: {},
   Routers: {},
   initialize: function() {
+    console.log('backbone app init')
     var channelRouter = new RailsApi.Routers.Channels();
     Backbone.history.start({});
   }

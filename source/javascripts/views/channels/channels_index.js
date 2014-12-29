@@ -1,6 +1,6 @@
 RailsApi.Views.ChannelView = Backbone.View.extend({
   tagName: 'li',
-  template: JST['channels/index'],
+  template: JST['channel_index'],
 
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);

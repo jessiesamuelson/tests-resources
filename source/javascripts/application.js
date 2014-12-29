@@ -1,6 +1,8 @@
-//= require_tree ./library
+//= require ./library/jquery-1.11.2.min
+//= require ./library/underscore-min
+//= require ./library/backbone-min
 //= require rails_api
-//= require_tree ../templates
+//= require_tree ./templates
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
