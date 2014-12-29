@@ -1,0 +1,75 @@
+<ul>
+  <li>
+    <h3>1. Get all channels</h3>
+    <pre>
+      GET /channels
+    </pre>
+    
+    <p><b>Pagination:</b> Customize results per page:</p>   
+    <pre>
+      ?per_page=[resultsPerPage]&page=[pageNumber]
+    </pre>
+    
+    <p>
+      If page or per_page params is not specified, the default params are <code>?page=1&per_page=20</code>, which means you get the first 20 results.
+    </p> 
+      
+    <p> 
+      Result object: 
+    </p>
+    <pre>
+      { channels: Array[20],
+        pagination: {
+          total: 382,
+          page: 1,
+          per_page: 20,
+          num_pages: 20
+      }
+    </pre>
+
+    <p>
+      To avoid pagination, add <code>?pagination=false</code>. The result will only contain: 
+    </p>
+    <pre>    { channels: Array[382] }</pre>    
+  </li>
+
+  <li>
+    <h3>3. Get channels by categories</h3>
+    <p>There are two ways. Via channels:</p>
+    <pre>
+      GET /channels?category=[categoryName]
+    </pre>
+
+    <p>
+      To get all channels from a group of categories, simply add comma separated category names. For example:
+    </p>
+    <pre>
+      /channels?category=curated,news
+
+    </pre>
+
+     <p>
+      To get channels that belong to two categories, add plus separated category names. For example:
+    </p>
+    <pre>
+      /channels?category=curated+news
+
+    <p>Via categories:</p>  
+    </pre>
+      GET /categories?name=[categoryName]
+          /categories?name=curated,news   
+          /categories?name=curated+news         
+    <p>
+      The same pagination rules apply to <code>/channels</code>. <code>/categories?name=[name]</code> does not have pagination.
+    </p>
+  </li> 
+
+  <li>
+    <h3>3. Search for channel</h3>
+    <p>Search by name:</p>
+    <pre>
+      GET /channels?term=[searchTerm]
+    </pre>
+    
+  </li>       
+</ul>
