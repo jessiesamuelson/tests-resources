@@ -1,6 +1,4 @@
-//= require jquery
-//= require underscore
-//= require backbone
+//= require_tree ./library
 //= require rails_api
 //= require_tree ../templates
 //= require_tree ./models
