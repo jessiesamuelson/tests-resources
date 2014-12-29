@@ -1,0 +1,31 @@
+<%= partial 'nav' %>
+
+<main class="channels">
+  <%= partial 'modal' %>
+  <%= partial '/channels/nav' %>
+
+  <section class='channels-api'>
+    <%= partial 'channels/api' %>
+  </section>   
+
+  <section class='new-channel'>
+    <%= partial 'channels/new' %>
+  </section>
+
+
+  <section class='search-channels'>
+    <%= partial 'channels/search' %>
+  </section>
+
+
+  <section class='all-channels'>
+    <h2>All channels</h2>
+    
+    <div class="pagination">
+    </div>
+
+    <ul id='channel-list'>
+    </ul>
+  </section>
+
+</main>

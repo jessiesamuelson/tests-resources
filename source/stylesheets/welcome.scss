@@ -1,0 +1,31 @@
+@import 'mixins';
+
+.welcome {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(0,0,0,.8);
+  overflow: auto;
+  color: #fff;
+
+  main {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .logo {
+    width: 16em;
+    margin: 4em 0 2em 0;
+  }
+}
+
+.welcome nav {
+  font-size: 1.5em;
+  a {
+    line-height: 2em;
+    color: $orange;
+    &:hover {
+      color: $light-orange2;
+    }
+  }
+}

@@ -9,25 +9,8 @@ window.RailsApi = {
   }
 };
 
-window.baseUrl = '/api';
+window.baseUrl = 'http://waywire-channels.herokuapp.com/api';
 
 $(document).ready(function(){
   RailsApi.initialize();
 });
-
-/* Helper functions */
-function updateUrl(url, pageNum) {
-  var pageParams = 'page='+pageNum;
-  currentParams = url.match(/page=\d+/);
-  if (currentParams === null) {
-    if (url.indexOf('?') > -1) {
-      pageParams = '&'+pageParams;
-    } else {
-      pageParams = '?'+pageParams; 
-    } 
-    url = url + pageParams;
-  } else {
-    url = url.replace(/page=\d+/, pageParams)
-  }  
-  return url;
-}
