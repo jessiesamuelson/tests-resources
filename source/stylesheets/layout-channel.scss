@@ -1,0 +1,209 @@
+@import 'mixins';
+
+main.channels {
+  width: 960px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.channels {
+  .heading {
+    margin: 0.5em 0;
+  }
+
+  section {
+    display: none;
+    width: 60%;
+    margin: 2em auto 0 auto;
+  }
+
+  section.current {
+    display: block;
+  }
+
+  code, pre {
+    font-family: 'Courier'; /*Consolas, "Liberation Mono"*/
+    color: #4C728F;
+  }  
+}
+
+
+/* SECTIONS */
+section.all-channels {
+  width: 80%;
+
+  h2 {
+    font-size: 1.8em;
+    display: inline-block;
+    margin: 0 0 .6em 0;
+  }
+
+  .pagination {
+    float: right;
+    margin: .5em 0 0 0;
+  }
+
+  p {
+    line-height: 1.5em;
+  }
+
+  button {
+    margin: .6em .6em 0 0;
+  }
+}
+
+section.all-channels {
+  div.details, div.curator {
+    display: none;
+  }
+
+  .more {
+    margin: .6em 0 .4em 0;
+  }
+
+  .more span {
+    @include hover-style;
+    margin: 0 1em 0 0;
+    color: $link-blue;
+    &:hover {
+      color: $link-blue2;
+    }
+  }
+}
+
+/* CHANNEL LIST */
+#channel-list, .search-channels .results {
+  margin: 0 0 2em 0;
+
+  li {  
+    padding: 1em .5em;
+    display: block;
+    &:nth-child(odd) {
+      background-color: #ebebeb;
+    }  
+  }
+
+  label {
+    width: 8em;
+    display: inline-block;
+  }
+
+  .value {
+    width: 34em;
+    position: absolute;
+    display: inline;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .name {
+    margin: 0 0 .5em 0;
+    font-size: 1.1em;
+    .value {
+      position: relative;
+    }
+  }
+
+  .edit-channel, .save-channel {
+    @include button-blue;
+  }
+  .delete-channel, .cancel {
+    @include button-orange;
+  }  
+}
+
+/* edit channel form */
+#channel-list, .search-channels .results {
+  .edit-form {
+    input {
+      width: 34em;
+    }
+    label, input {
+      margin: .3em 0;
+    }
+  }
+}
+
+
+/* Documentation text */
+.channels-api, .search-channels {
+  h3, p, li {
+    margin: 0 0 .6em 0;
+  }
+}
+
+.channels-api li {
+  margin: 0 0 1.5em 0;
+}  
+
+.channels-api {
+  width: 70%;
+}
+
+/* Search channels */
+section.search-channels {
+  width: 80%;
+
+  #search-channels {
+    width: 60%;
+  }
+
+  .edit-form {
+    width: 100%;
+  }
+
+  .guideline {
+    width: 80%;    
+    list-style-type: disc;
+    margin: 0 auto;
+  }
+
+  .row {
+    overflow-y: auto;
+    margin: 2em 0 1em 0;
+  }
+  button.clear {
+    float: right;
+    display: none;
+    @include button-green;
+  }
+
+  button.clear.dirty {
+    display: inline-block;
+  }
+
+  .pagination {
+    float: left;
+  }
+
+  .more {
+    display: none;
+  }
+}
+
+/* FORMS */
+section.new-channel, section.search-channels {
+  form {
+    width: 80%;
+    margin: 1em auto 1em auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+form#new-channel, form#search-channels {
+  input[type='text'] {
+    width: 95%;
+    display: block;
+    margin: 7px auto;
+  }
+
+  input[type='submit'] {
+    float: right;
+    margin-right: 2.5%;
+    @include button-green;
+    color: #fff;
+  }
+}
+

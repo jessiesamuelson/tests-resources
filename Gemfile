@@ -12,3 +12,10 @@ gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
 
 # Windows does not come with time zone data
 gem "tzinfo-data", platforms: [:mswin, :mingw]
+
+
+
+gem 'jquery', '~> 0.0.1'
+gem 'backbone-source', '~> 0.0.3'
+gem 'sass', '~> 3.4.9'
+

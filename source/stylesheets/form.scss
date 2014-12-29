@@ -1,0 +1,26 @@
+@import 'mixins';
+
+section.new-channel, section.search-channels {
+  form {
+    width: 80%;
+    margin: 1em auto 1em auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+form#new-channel, form#search-channels {
+  input[type='text'] {
+    width: 95%;
+    display: block;
+    margin: 7px auto;
+  }
+
+  input[type='submit'] {
+    float: right;
+    margin-right: 2.5%;
+    @include button-green;
+    color: #fff;
+  }
+}
+

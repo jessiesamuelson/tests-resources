@@ -1,0 +1,74 @@
+@import 'mixins';
+
+/* GLOBAL NAV */
+nav.global {
+  width: 100%;
+  background-color: $text-color;
+  span, a {
+    color: #fff;
+  }
+    
+  .logo {
+    width: 10em;
+    margin: 5px 0 0 0;
+  }
+
+  .dropdown-container {
+    position: absolute;
+    z-index: 2;
+    right: 2.5em;
+    top: 1.2em; 
+    text-align: right;
+    &:hover {
+      @include hover-style;
+      .dropdown {
+        visibility: visible;
+      }
+    }    
+  }
+}
+
+/* Drop down menu */
+.global .dropdown { 
+  top: .6em;
+  padding: .5em .4em;  
+  visibility: hidden;
+  background-color: $text-color;
+
+  li {
+    padding: .2em;  
+  }
+
+  a {
+    width: 100%;
+    display: block;
+    &:hover {
+      color: $light-orange2;
+    }
+  }
+}
+
+/* CHANNELS NAV */
+.channels nav {
+  font-size: 1.1em;
+  
+  li {
+    display: inline;
+    margin-right: 1em;
+  }  
+
+  li.current {
+    font-weight: bold;
+  }
+}
+
+
+/* PAGINATION */
+.pagination {
+  a {
+    margin: 0 .2em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
