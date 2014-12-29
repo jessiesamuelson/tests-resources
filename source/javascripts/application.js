@@ -1,8 +1,8 @@
 //= require ./library/jquery-1.11.2.min
-//= require ./library/underscore-min
-//= require ./library/backbone-min
-//= require rails_api
+//= require ./library/underscore
+//= require ./library/backbone
 //= require_tree ./templates
+//= require rails_api
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

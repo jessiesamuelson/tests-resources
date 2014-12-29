@@ -1,6 +1,6 @@
 RailsApi.Views.ChannelView = Backbone.View.extend({
   tagName: 'li',
-  template: JST['channel_index'],
+  template: JST['templates/channel_index'],
 
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
@@ -8,6 +8,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
   },
 
   render: function() {
+    console.log(this.template)
     var channel = this.template(this.model.attributes);
     this.$el.append(channel);
     return this;
