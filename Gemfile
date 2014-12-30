@@ -17,4 +17,3 @@ gem 'ejs'
 
 gem 'sass', '~> 3.4.9'
 gem 'font-awesome-sass'
-gem 'backbone-source'
