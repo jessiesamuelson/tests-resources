@@ -1,5 +1,6 @@
 $(function() {
   detectSection();
+  $(window).on('popstate', detectSection);
   clearResultButton();
 
   $('.channels nav a').click(function(e) {
@@ -22,10 +23,10 @@ function toggleSection($target) {
 function detectSection() {
   var anchor = window.location.hash;
   if (anchor === '') {  
-    toggleSection($('.all-channels'));
-  } else {
-    toggleSection($("a[href='"+anchor+"']"));
+    window.location.hash = '#all';
+    anchor = '#all';
   }
+  toggleSection($("a[href='"+anchor+"']"));
 }
 
 function clearResultButton() {

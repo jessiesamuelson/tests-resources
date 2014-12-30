@@ -8,7 +8,6 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log(this.template)
     var channel = this.template(this.model.attributes);
     this.$el.append(channel);
     return this;
