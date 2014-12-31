@@ -40,7 +40,9 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
     });    
   },
 
-  showEditForm: function() {
+  showEditForm: function(e) {
+    e.preventDefault();
+    
     var name = $(this.el).find('.name'),
         src = $(this.el).find('.src'),
         href = $(this.el).find('.href'),
