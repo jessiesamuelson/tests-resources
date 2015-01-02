@@ -22,7 +22,8 @@ function toggleSection($target) {
 
 function detectSection() {
   var anchor = window.location.hash;
-  if (anchor === '') {  
+  var pageUrl = window.location.href;
+  if (pageUrl.indexOf('channel-manager') > -1 && anchor === '') {
     window.location.hash = '#all';
     anchor = '#all';
   }
@@ -34,5 +35,5 @@ function clearResultButton() {
     $('.search-channels .clear').addClass('dirty');
   } else {
     $('.search-channels .clear').removeClass('dirty');
-  }     
+  }
 }
