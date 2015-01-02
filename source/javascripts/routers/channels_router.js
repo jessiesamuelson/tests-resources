@@ -4,7 +4,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
     'search': 'searchChannels'
   },
 
-  initialize: function() {    
+  initialize: function() {
     this.fetchChannels('#channel-list', baseUrl+'/channels', '.all-channels .pagination');
   },
 
@@ -16,16 +16,16 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
       el: $(el)
     });
 
-    this.channels.url = url;  
+    this.channels.url = url;
     this.channels.fetch({async: false}).done(function(data) {
       clearResultButton();
       if (data.channels.length === 0) {
         notify('No channel found.', 'error')
-      } else { 
+      } else {
         that.pagination = new Pagination(paginationDiv, data.pagination);
         that.changePage(); // Listen for click on pagination
         that.channelListView.render();
-      }           
+      }
     });
   },
 
@@ -41,19 +41,22 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           desc = $('input[name="desc"]').val(),
           keywords = $(this.el).find('input[name="keywords"]').val(),
           twitter_widget_id = $('input[name="twitter_widget_id"]').val(),
+          community_site_id = $('input[name="community_site_id"]').val(),
+          banner_img = $('input[name="banner_img"]').val(),
           mobile_banner = $('input[name="mobile_banner"]').val(),
           curator_name = $('input[name="curator_name"]').val(),
           curator_img = $('input[name="curator_img"]').val(),
+          curator_video = $('input[name="curator_video"]').val(),
           curator_desc = $('input[name="curator_desc"]').val();
 
       var newChannel = new RailsApi.Models.Channel({
-        name: name, src: src, 
-        href: href, category_array: categoryArray, 
-        desc: desc, keywords: keywords, 
-        twitter_widget_id: twitter_widget_id, 
-        mobile_banner: mobile_banner, 
+        name: name, src: src,
+        href: href, category_array: categoryArray,
+        desc: desc, keywords: keywords,
+        twitter_widget_id: twitter_widget_id,
+        banner_img: banner_img, mobile_banner: mobile_banner,
         curator_name: curator_name, curator_img: curator_img,
-        curator_desc: curator_desc
+        curator_video: curator_video, curator_desc: curator_desc
       });
 
       newChannel.url = baseUrl+'/channels';
@@ -64,13 +67,13 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
         error: function(data) {
           notify(data.attributes.msg, 'error'); }
       });
-      
+
       that.channels.fetch();
       $('#new-channel').find('input[type="text"]').val('');
     });
   },
 
-  changePage: function() {  
+  changePage: function() {
     var that = this;
     this.pagination.$el.click(function(e) {
       var pageNum = that.pagination.change($(e.target));
@@ -89,7 +92,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
       e.preventDefault();
       var searchTerm = $(this).find('input[name="term"]').val(),
           resultDiv = '.search-channels .results',
-          paginationDiv = '.search-channels .pagination', 
+          paginationDiv = '.search-channels .pagination',
           url;
 
       if (searchTerm.indexOf('category:') > -1) {
@@ -109,7 +112,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
     var clear = function() {
       $('#search-channels input[type="text"]').val('');
       $('.search-channels').find('.results').empty();
-      $('.search-channels').find('.pagination').empty();      
+      $('.search-channels').find('.pagination').empty();
       $('.search-channels').find('.clear').removeClass('dirty');
     }
 

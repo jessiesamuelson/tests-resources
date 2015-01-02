@@ -6,10 +6,15 @@
       <input type='text' name='category_array' placeholder='Channel categories (comma separated)'>
       <input type='text' name='desc' placeholder='Channel description'>
       <input type='text' name='keywords' placeholder='Keywords (comma separated)'>
+      <input type='text' name='banner_img' placeholder='Channel banner image'>
       <input type='text' name='mobile_banner' placeholder='Mobile banner image'>
       <input type='text' name='twitter_widget_id' placeholder='Twitter widget id'>
+      <input type='text' name='community_site_id' placeholder='Community site id'>
       <input type='text' name='curator_name' placeholder='Curator name'>
       <input type='text' name='curator_img' placeholder='Curator image'>
+      <input type='text' name='curator_video' placeholder='Curator video (mp4)'>
       <input type='text' name='curator_desc' placeholder='Curator description'>
       <input type='submit' value='Add channel'>
     </form>
+
+  <%= partial 'video' %>

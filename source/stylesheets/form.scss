@@ -24,3 +24,9 @@ form#new-channel, form#search-channels {
   }
 }
 
+section.new-channel .curator-video {
+  margin: 0 0 3em 0;
+  input[type='text'] {
+    width: 70%;
+  }
+}
