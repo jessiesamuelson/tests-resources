@@ -1,6 +1,7 @@
 function notify(message, status) {
   $('.notify').html(message).fadeIn();
   $('.notify').addClass(status);
+  $('.notify').css('top', $(window).scrollTop());
 
   setTimeout(function() {
     $('.notify').html('').removeClass(status).fadeOut();
