@@ -24,7 +24,7 @@ main.channels {
   code, pre {
     font-family: 'Courier'; /*Consolas, "Liberation Mono"*/
     color: #4C728F;
-  }  
+  }
 }
 
 
@@ -57,6 +57,10 @@ section.all-channels {
     display: none;
   }
 
+  div.details.active, div.curator.active {
+    display: block;
+  }
+
   .more {
     margin: .6em 0 .4em 0;
   }
@@ -75,12 +79,12 @@ section.all-channels {
 #channel-list, .search-channels .results {
   margin: 0 0 2em 0;
 
-  li {  
+  li {
     padding: 1em .5em;
     display: block;
     &:nth-child(odd) {
       background-color: #ebebeb;
-    }  
+    }
   }
 
   label {
@@ -110,7 +114,7 @@ section.all-channels {
   }
   .delete-channel, .cancel {
     @include button-orange;
-  }  
+  }
 }
 
 /* edit channel form */
@@ -135,7 +139,7 @@ section.all-channels {
 
 .channels-api li {
   margin: 0 0 1.5em 0;
-}  
+}
 
 .channels-api {
   width: 70%;
@@ -154,7 +158,7 @@ section.search-channels {
   }
 
   .guideline {
-    width: 80%;    
+    width: 80%;
     list-style-type: disc;
     margin: 0 auto;
   }
@@ -175,10 +179,6 @@ section.search-channels {
 
   .pagination {
     float: left;
-  }
-
-  .more {
-    display: none;
   }
 }
 

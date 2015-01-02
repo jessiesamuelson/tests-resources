@@ -19,7 +19,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
     'click .save-channel': 'updateChannel',
     //'submit .edit-form': 'updateChannel',
     'click .cancel': 'cancelUpdate',
-    'click .more span': 'toggleDetails', 
+    'click .more span': 'toggleDetails',
   },
 
   deleteChannel: function() {
@@ -36,13 +36,13 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
       }, {
         error: function(model, response) {
           notify(response.msg, 'error'); }
-      });      
-    });    
+      });
+    });
   },
 
   showEditForm: function(e) {
     e.preventDefault();
-    
+
     var name = $(this.el).find('.name'),
         src = $(this.el).find('.src'),
         href = $(this.el).find('.href'),
@@ -59,17 +59,17 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         editButton = $(this.el).find('.edit-channel'),
         deleteButton = $(this.el).find('.delete-channel'),
         fields = [];
-    fields.push(name, src, href, category_array, desc, 
+    fields.push(name, src, href, category_array, desc,
       keywords, mobile_banner, banner_img, twitter_widget_id,
       curator_name, curator_img, curator_desc, curator_video);
 
     _.each(fields, function(field) {
       $(field).replaceWith(function() {
         var fieldValue = $(this).find('.value').html(),
-            fieldLabel = $(this).find('label'), 
+            fieldLabel = $(this).find('label'),
             fieldName = $(this).attr('class'),
             input = $('<input type="text">'),
-            div = $('<div>');     
+            div = $('<div>');
         input.addClass(fieldName).val($.trim(fieldValue));
         if (fieldName === 'name') {
           fieldLabel = $('<label>').html('Name:');
@@ -82,6 +82,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
     editButton.html('Save').attr('class', 'save-channel');
     deleteButton.html('Cancel').attr('class', 'cancel');
     $(this.el).wrapInner($('<form>').addClass('edit-form'));
+    this.showMore();
   },
 
   updateChannel: function() {
@@ -96,16 +97,16 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         banner_img = $(this.el).find('.banner_img').val(),
         curator_name = $(this.el).find('.curator_name').val(),
         curator_img = $(this.el).find('.curator_img').val(),
-        curator_desc = $(this.el).find('.curator_desc').val(), 
+        curator_desc = $(this.el).find('.curator_desc').val(),
         curator_video = $(this.el).find('.curator_video').val(),
         id = $(this.el).find('.save-channel').attr('data');
 
     this.model.set({
-      name: name, src: src, 
-      href: href, category_array: category_array, 
-      desc: desc, keywords: keywords, 
+      name: name, src: src,
+      href: href, category_array: category_array,
+      desc: desc, keywords: keywords,
       mobile_banner: mobile_banner, banner_img: banner_img,
-      twitter_widget_id: twitter_widget_id, 
+      twitter_widget_id: twitter_widget_id,
       curator_name: curator_name, curator_img: curator_img,
       curator_desc: curator_desc, curator_video: curator_video
     });
@@ -120,14 +121,20 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
     });
   },
 
-  cancelUpdate: function() {
+  cancelUpdate: function(e) {
+    e.preventDefault();
     this.$el.empty();
     this.render();
-  }, 
+  },
 
   toggleDetails: function(e) {
     var className = $(e.target).attr('class');
-    $(e.target).parent().parent().find('div.'+className).slideToggle();
+    $(e.target).parent().parent().find('div.'+className).toggleClass('active');
+  },
+
+  showMore: function() {
+    this.$el.find('div.details').addClass('active');
+    this.$el.find('div.curator').addClass('active');
   }
 
 });

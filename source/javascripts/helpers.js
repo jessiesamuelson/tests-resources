@@ -15,15 +15,15 @@ function openModal(container, msg) {
   $(container+' .modal').addClass('active');
   $('body').addClass('noscroll');
 
-  $(container+' .modal .fa-times').click(closeModal); 
-  $(container+' .modal .cancel').click(closeModal); 
+  $(container+' .modal .fa-times').click(closeModal);
+  $(container+' .modal .cancel').click(closeModal);
 }
- 
+
 function closeModal() {
   $('.overlay').removeClass('active');
   $('.modal').removeClass('active');
   $('body').removeClass('noscroll');
-} 
+}
 
 function updateUrl(url, pageNum) {
   var pageParams = 'page='+pageNum;
@@ -32,11 +32,11 @@ function updateUrl(url, pageNum) {
     if (url.indexOf('?') > -1) {
       pageParams = '&'+pageParams;
     } else {
-      pageParams = '?'+pageParams; 
-    } 
+      pageParams = '?'+pageParams;
+    }
     url = url + pageParams;
   } else {
     url = url.replace(/page=\d+/, pageParams)
-  }  
+  }
   return url;
 }
