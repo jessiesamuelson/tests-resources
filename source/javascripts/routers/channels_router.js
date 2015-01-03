@@ -5,7 +5,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
   },
 
   initialize: function() {
-    this.fetchChannels('#channel-list', baseUrl+'/channels', '.all-channels .pagination');
+    this.fetchChannels('.all-channels .channel-list', baseUrl+'/channels', '.all-channels .pagination');
   },
 
   fetchChannels: function(el, url, paginationDiv) {
@@ -80,7 +80,11 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
 
       if (pageNum != undefined) {
         that.channels.url = updateUrl(that.channels.url, pageNum);
-        that.channels.fetch();
+        that.channels.fetch({
+          success: function() {
+            that.pagination.doneLoading();
+          }
+        });
       }
     });
   },
@@ -91,16 +95,16 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
     $('#search-channels').submit(function(e) {
       e.preventDefault();
       var searchTerm = $(this).find('input[name="term"]').val(),
-          resultDiv = '.search-channels .results',
+          resultDiv = '.search-channels .channel-list',
           paginationDiv = '.search-channels .pagination',
           url;
 
       if (searchTerm.indexOf('category:') > -1) {
         var categories = searchTerm.replace('category:','');
-        url = '/channels?category='+categories;
+        url = baseUrl+'/channels?category='+categories;
         that.fetchChannels(resultDiv, url, paginationDiv);
       } else {
-        url = '/channels?term='+searchTerm;
+        url = baseUrl+'/channels?term='+searchTerm;
         that.fetchChannels(resultDiv, url, paginationDiv);
       }
 
@@ -111,7 +115,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
   clearSearch: function() {
     var clear = function() {
       $('#search-channels input[type="text"]').val('');
-      $('.search-channels').find('.results').empty();
+      $('.search-channels').find('.channel-list').empty();
       $('.search-channels').find('.pagination').empty();
       $('.search-channels').find('.clear').removeClass('dirty');
     }

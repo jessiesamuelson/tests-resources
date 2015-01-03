@@ -4,27 +4,29 @@
       <input type="text" name='term' placeholder='Search term'>
       <input type="submit" value='Search'>
     </form>
-    
+
     <ul class='guideline'>
-    <h3>Search guidelines:</h3> 
+    <h3>Search guidelines:</h3>
     <li>
       To get channels by name, simply input all or part of the name (not case-sensitive). For example: <code>bark park</code>.
-    </li>      
+    </li>
     <li>
       <code>category:curated</code> gets all channels with category Curated.
     </li>
-    <li>   
+    <li>
       To get all channels from multiple categories, add comma separated categories <code>category:curated,news</code>
-    </li> 
-    <li>   
+    </li>
+    <li>
       To get all channels that belong to two or more categories, add plus separated categories <code>category:curated+news</code>
-    </li>     
+    </li>
     </ul>
-    
-    <div class="row">    
-      <button class='clear'>Clear results</button>
-      <div class="pagination"></div>
-    </div>
-    
-    <ul class='results'>
+
+
+    <button class='clear'>Clear results</button>
+    <div class="pagination"></div>
+    <div class="clear-float"></div>
+
+    <ul class='channel-list'>
     </ul>
+
+    <img class='loader' src="http://waywire.com/media/site/YH5PLD0V56XPX2RS/uploads/loader1.gif" alt="">

@@ -31,7 +31,7 @@ function detectSection() {
 }
 
 function clearResultButton() {
-  if ($('.search-channels .results').children().length > 0) {
+  if ($('.search-channels .channel-list').children().length > 0) {
     $('.search-channels .clear').addClass('dirty');
   } else {
     $('.search-channels .clear').removeClass('dirty');

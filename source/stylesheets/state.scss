@@ -104,3 +104,18 @@
 .modal.active {
   display: block;
 }
+
+/* LOADER */
+.loader {
+  display: none;
+  width: 5em;
+  margin: 3em auto;
+}
+
+.loader.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

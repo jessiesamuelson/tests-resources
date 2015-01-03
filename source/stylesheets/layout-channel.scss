@@ -52,7 +52,7 @@ section.all-channels {
   }
 }
 
-section.all-channels {
+section.all-channels, section.search-channels {
   div.details, div.curator {
     display: none;
   }
@@ -76,7 +76,8 @@ section.all-channels {
 }
 
 /* CHANNEL LIST */
-#channel-list, .search-channels .results {
+.all-channels .channel-list,
+.search-channels .channel-list {
   margin: 0 0 2em 0;
 
   li {
@@ -118,7 +119,8 @@ section.all-channels {
 }
 
 /* edit channel form */
-#channel-list, .search-channels .results {
+.all-channels .channel-list,
+.search-channels .channel-list {
   .edit-form {
     input {
       width: 34em;
@@ -160,15 +162,12 @@ section.search-channels {
   .guideline {
     width: 80%;
     list-style-type: disc;
-    margin: 0 auto;
+    margin: 0 auto 1.5em auto;
   }
 
-  .row {
-    overflow-y: auto;
-    margin: 2em 0 1em 0;
-  }
   button.clear {
     float: right;
+    clear:right;
     display: none;
     @include button-green;
   }
@@ -178,8 +177,9 @@ section.search-channels {
   }
 
   .pagination {
-    float: left;
+    margin: 0 0 1.5em 0;
   }
+
 }
 
 /* FORMS */

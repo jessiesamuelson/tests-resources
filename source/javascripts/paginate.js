@@ -11,7 +11,7 @@ function Pagination(paginationDiv, paginationObject) {
   this.targetNum;
   this.targetIndex;
   this.lastIndex = this.numPages - 1;
-  
+
   this.init = function() {
     this.buildPagination();
     this.initialSetup();
@@ -19,7 +19,7 @@ function Pagination(paginationDiv, paginationObject) {
       this.initialClip();
     }
   };
- 
+
   this.buildPagination = function() {
     var pageArray = _.range(1, this.numPages + 1);
     for (var i = 0; i < pageArray.length; i++) {
@@ -29,9 +29,9 @@ function Pagination(paginationDiv, paginationObject) {
     var nextPage = $('<a>').html('Next <i class="fa fa-angle-double-right"></i>').attr('data', 'next').addClass('next'),
         prevPage = $('<a>').html('<i class="fa fa-angle-double-left"></i>&nbsp;Previous').attr('data', 'prev').addClass('prev');
     pageArray.unshift(prevPage);
-    pageArray.push(nextPage); 
-    this.$el.html(pageArray); 
-    // this.disableClick();   
+    pageArray.push(nextPage);
+    this.$el.html(pageArray);
+    // this.disableClick();
   };
 
   // this.disableClick = function(index) {
@@ -42,7 +42,7 @@ function Pagination(paginationDiv, paginationObject) {
   //   setTimeout(function() {
   //     _.each(that.$el.find('a'), function(link) {
   //       $(link).attr('disabled', '');
-  //     });      
+  //     });
   //   }, 800);
   // };
 
@@ -61,69 +61,71 @@ function Pagination(paginationDiv, paginationObject) {
                        .addClass('clip').addClass('before');
     clipAfter.insertBefore(this.$el.find('.page').last());
     clipBefore.insertAfter(this.$el.find('.page').first()).hide();
-          
+
     if (this.numPages > this.numVisible) {
       for (var i = this.numVisible - 1; i < this.lastIndex; i++) {
         $(this.$el.find('.page')[i]).hide();
-      }   
-    } 
+      }
+    }
   };
 
   this.change = function($targetPage) {
-    this.$currentPage = this.$el.find('.current'),
-    this.currentNum = parseInt(this.$currentPage.html());
-    this.$targetPage = $targetPage;   
+    if ($targetPage.attr('class').indexOf('disabled') === -1) {
+      this.loading();
+      this.$currentPage = this.$el.find('.current'),
+      this.currentNum = parseInt(this.$currentPage.html());
+      this.$targetPage = $targetPage;
 
-    if (this.$targetPage.attr('data') === 'prev') {
-      if (this.currentNum === 1) {
-        return;
+      if (this.$targetPage.attr('data') === 'prev') {
+        if (this.currentNum === 1) {
+          return;
+        } else {
+          this.targetNum = this.currentNum - 1;
+          this.$targetPage = $(this.$el.find('.page')[this.targetNum - 1]);
+        }
+      } else if (this.$targetPage.attr('data') === 'next') {
+        if (this.currentNum === this.numPages) {
+          return;
+        } else {
+          this.targetNum = this.currentNum + 1;
+          this.$targetPage = $(this.$el.find('.page')[this.targetNum - 1]);
+        }
       } else {
-        this.targetNum = this.currentNum - 1;
-        this.$targetPage = $(this.$el.find('.page')[this.targetNum - 1]);      
+        this.targetNum = parseInt(this.$targetPage.html());
       }
-    } else if (this.$targetPage.attr('data') === 'next') {
-      if (this.currentNum === this.numPages) {
-        return;
-      } else {
-        this.targetNum = this.currentNum + 1;
-        this.$targetPage = $(this.$el.find('.page')[this.targetNum - 1]);  
-      }    
-    } else {
-      this.targetNum = parseInt(this.$targetPage.html());
-    } 
-    
-    this.targetIndex = this.$el.find('.page').index(this.$targetPage);
-    this.transition();
-    if (this.numPages > this.numVisible) {
-      this.clip();
-    }    
 
-    return this.targetNum;    
+      this.targetIndex = this.$el.find('.page').index(this.$targetPage);
+      this.transition();
+      if (this.numPages > this.numVisible) {
+        this.clip();
+    }
+    }
+    return this.targetNum;
   };
 
   this.transition = function() {
-    // Page appearance
+    // Style selected page + back/forward buttons
     this.$currentPage.removeClass('current');
-    this.$targetPage.css({'font-style': 'italic'});  
+    this.$targetPage.css({'font-style': 'italic'});
     setTimeout(function() {
       that.$targetPage.addClass('current').css({'font-style': ''});
-    }, 500);   
+    }, 500);
 
     // Prev - next buttons
-    this.$el.find('.disabled').removeClass('disabled'); 
+    this.$el.find('.disabled').removeClass('disabled');
     if (this.targetNum === this.numPages) {
       this.$el.find('.next').addClass('disabled');
     } else if (this.targetNum === 1) {
       this.$el.find('.prev').addClass('disabled');
-    }    
+    }
   };
 
-  this.clip = function() {  
+  this.clip = function() {
     // Show 4 pages before and after target
     for (var p = 1; p < 5; p++) {
       $(this.$el.find('.page')[this.targetIndex+p]).show();
       $(this.$el.find('.page')[this.targetIndex-p]).show();
-    } 
+    }
 
     // Check if there's any more hidden pages after
     if (this.targetIndex+4 >= this.numPages) {
@@ -131,11 +133,11 @@ function Pagination(paginationDiv, paginationObject) {
     } else {
       this.$el.find('.clip.after').show();
       // Hide leftover pages before last page
-      var diff = this.lastIndex - (this.targetIndex+4) - 1;   
+      var diff = this.lastIndex - (this.targetIndex+4) - 1;
       for (var j = 0; j < diff; j++) {
         $(this.$el.find('.page')[this.lastIndex - j-1]).hide();
       }
-    } 
+    }
 
     // Check if there's any more hidden pages before
     if (this.targetIndex-4 <= 0) {
@@ -147,10 +149,10 @@ function Pagination(paginationDiv, paginationObject) {
       for (var j = 0; j < diff; j++) {
         $(this.$el.find('.page')[j+1]).hide();
       }
-    } 
+    }
 
     // Edge cases
-    // if (this.targetIndex < 4) {  
+    // if (this.targetIndex < 4) {
     //   var diff = this.lastIndex - this.targetIndex - 1;
     //   for (var m = 1; m < diff; m++) {
     //     var page = this.$el.find('.page')[this.targetIndex+m];
@@ -160,8 +162,8 @@ function Pagination(paginationDiv, paginationObject) {
     //     } else {
     //       $(page).hide();
     //       console.log('hide page ', page)
-    //     } 
-        
+    //     }
+
     //   }
     // } else if (this.targetIndex > 14) {
     //   var diff = this.lastIndex - this.targetIndex - 1;
@@ -177,16 +179,32 @@ function Pagination(paginationDiv, paginationObject) {
     //       console.log('hide page ', page)
     //     }
     //   }
-    // } 
-            
+    // }
+
+  };
+
+  this.loading = function() {
+    var section = this.$el.parent(),
+        channelList = section.find('.channel-list'),
+        loader = section.find('.loader');
+    loader.addClass('active');
+    channelList.addClass('hidden');
+  };
+
+  this.doneLoading = function() {
+    var section = this.$el.parent(),
+        channelList = section.find('.channel-list'),
+        loader = section.find('.loader');
+    loader.removeClass('active');
+    channelList.removeClass('hidden');
   };
 
   // Initialize pagination
-  if (this.numPages > 1) { 
-    this.init(); 
+  if (this.numPages > 1) {
+    this.init();
   } else {
     this.$el.empty();
-  } 
+  }
 
-  return this; 
+  return this;
 }
