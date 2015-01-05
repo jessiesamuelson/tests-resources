@@ -23,7 +23,7 @@ function toggleSection($target) {
 function detectSection() {
   var anchor = window.location.hash;
   var pageUrl = window.location.href;
-  if (pageUrl.indexOf('channel-manager') > -1 && anchor === '') {
+  if (pageUrl.indexOf('/channel-manager') > -1 && anchor === '') {
     window.location.hash = '#all';
     anchor = '#all';
   }
