@@ -9,7 +9,8 @@ window.RailsApi = {
   }
 };
 
-window.baseUrl = 'http://channel-api.herokuapp.com/api';
+window.baseUrl = 'http://waywire.com.nessa.dev.magnify.net/admin/services/waywiremanager/api';
+ // 'http://channel-api.herokuapp.com/api';
 
 $(document).ready(function(){
   RailsApi.initialize();
