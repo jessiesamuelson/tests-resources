@@ -5,6 +5,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
   },
 
   initialize: function() {
+    this.authenticateApi();
     this.fetchChannels('.all-channels .channel-list', baseUrl+'/channels', '.all-channels .pagination');
   },
 
@@ -23,8 +24,17 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
         notify('No channel found.', 'error')
       } else {
         that.pagination = new Pagination(paginationDiv, data.pagination);
-        that.changePage(); // Listen for click on pagination
+        that.changePage(); 
         that.channelListView.render();
+      }
+    });
+  },
+
+  authenticateApi: function() {
+    $.ajaxSetup({
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Token token=819b068576ed3c83b01f5e8fe56ae2fc'
       }
     });
   },
