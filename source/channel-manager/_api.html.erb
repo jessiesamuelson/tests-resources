@@ -1,6 +1,34 @@
 <ul>
   <li>
-    <h3>1. Get all channels</h3>
+    <h3>1. Authentication</h3>
+    <p>Base url: <code>var baseUrl = http://waywire.com:3001/api;</code><p>
+    <p>You need to sign up and obtain api keys from Waywire.</p>
+    <p>In the AJAX request, you must set headers like below:</p>
+    <pre>
+    $.ajax({
+      url: baseUrl+'/channels',
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Token token='+[api key]
+      }, 
+      success: successCallback
+    });
+    </pre>
+
+    <p>If you are using Backbone or want this header to apply to every request, you can do the following:</p>
+    <pre>
+    $.ajaxSetup({
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Token token='+[api key]
+      }
+    });
+    </pre>
+  </li>
+  
+  <li>
+    <h3>2. Get all channels</h3>
     <pre>
       GET /channels
     </pre>
@@ -53,19 +81,21 @@
     </p>
     <pre>
       /channels?category=curated+news
-
-    <p>Via categories:</p>  
     </pre>
+      
+    <p>Get channels from categories:</p>  
+    <pre>
       GET /categories?name=[categoryName]
-          /categories?name=curated,news   
-          /categories?name=curated+news         
+      GET /categories?name=curated,news   
+      GET /categories?name=curated+news 
+    </pre>        
     <p>
       The same pagination rules apply to <code>/channels</code>. <code>/categories?name=[name]</code> does not have pagination.
     </p>
   </li> 
 
   <li>
-    <h3>3. Search for channel</h3>
+    <h3>4. Search for channel</h3>
     <p>Search by name:</p>
     <pre>
       GET /channels?term=[searchTerm]
