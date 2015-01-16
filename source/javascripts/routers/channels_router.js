@@ -34,7 +34,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
     $.ajaxSetup({
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Token token=819b068576ed3c83b01f5e8fe56ae2fc'
+        'Authorization': 'Token token='+apiKey
       }
     });
   },

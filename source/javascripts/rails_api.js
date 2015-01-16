@@ -9,8 +9,9 @@ window.RailsApi = {
   }
 };
 
-window.baseUrl = 'http://waywire.com.nessa.dev.magnify.net/admin/services/waywiremanager/api';
+window.baseUrl = 'http://staging.waywire.com:3001/api';
  // Production 'http://waywire.com/admin/services/waywiremanager';
+window.apiKey = '798b6e1e7325d9de44a2a4410a0ba3b4';
 
 $(document).ready(function() {
   RailsApi.initialize();
