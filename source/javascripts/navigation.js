@@ -1,17 +1,3 @@
-$(function() {
-  authenticate();
-
-  detectSection();
-  $(window).on('popstate', detectSection);
-  clearResultButton();
-
-  $('.channels nav a').click(function(e) {
-    toggleSection($(e.target));
-  });
-
-});
-
-
 function toggleSection($target) {
   if ($target.attr('href').indexOf('#') > -1) {
     $('.current').removeClass('current');

@@ -23,3 +23,17 @@ $.getScript('javascripts/curatorVideo.js', function() {});
 $.getScript('javascripts/helpers.js', function() {})
 $.getScript('javascripts/navigation.js', function() {});
 $.getScript('javascripts/paginate.js', function() {});
+
+setTimeout(function() {
+  RailsApi.initialize();
+
+  authenticate();
+  detectSection();
+  $(window).on('popstate', detectSection);
+  clearResultButton();
+
+  $('.channels nav a').click(function(e) {
+    toggleSection($(e.target));
+  });
+
+}, 300);
