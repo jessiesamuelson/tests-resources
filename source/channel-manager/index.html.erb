@@ -19,6 +19,9 @@
 
 
   <section class='all-channels'>
+    <div class="hidden" id='channel-template'>
+    </div>
+
     <h2>All channels</h2>
 
     <div class="pagination">
@@ -31,3 +34,8 @@
   </section>
 
 </main>
+
+
+<script type="text/javascript">
+  $('#channel-template').load('javascripts/templates/channel_index.txt')
+</script>
