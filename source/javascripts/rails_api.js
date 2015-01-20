@@ -11,4 +11,4 @@ window.RailsApi = {
 
 window.baseUrl = 'http://staging.waywire.com:3001/api';
  // Production 'http://waywire.com/admin/services/waywiremanager';
-window.apiKey = '798b6e1e7325d9de44a2a4410a0ba3b4';
+window.apiKey = '2c4fb4dce435b633c5ae1bb38b3cd678'; // Key from staging.waywire.com:3001
