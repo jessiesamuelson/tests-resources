@@ -29,7 +29,7 @@ function clearResultButton() {
 function authenticate() {
   var mvp_session = document.cookie.match(/mvp_session=\w+/)[0];
   var sessionId = mvp_session.replace('mvp_session=','');
-  
+
   $.ajax({
     url: 'http://waywire.com/_check_session?sess_id='+sessionId,
     type: 'GET',
