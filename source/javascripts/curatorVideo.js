@@ -9,7 +9,7 @@ function getCuratorVideo(e) {
       showmakerUrl = showmakerUrlInput.val();
 
   $.ajax({
-    url: baseUrl+'/curator-video?url='+showmakerUrl+'',
+    url: baseUrl+'/curator-video?url='+showmakerUrl,
     method: 'GET',
     dataType: 'json',
     headers: {
