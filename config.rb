@@ -47,11 +47,12 @@
 #   end
 # end
 
-set :css_dir, 'admin/services/waywiremanager/stylesheets'
+# set :css_dir, 'admin/services/waywiremanager/stylesheets'
+# set :js_dir, 'admin/services/waywiremanager/javascripts'
+# set :images_dir, 'admin/services/waywiremanager/images'
 
-set :js_dir, 'admin/services/waywiremanager/javascripts'
-
-set :images_dir, 'admin/services/waywiremanager/images'
+set :css_dir, 'stylesheets'
+set :js_dir, 'javascripts'
 
 # Build-specific configuration
 configure :build do

@@ -8,3 +8,17 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+$(function() {
+  RailsApi.initialize();
+  // Uncomment when deployed to waywire.com domain
+  //authenticate();
+  detectSection();
+  $(window).on('popstate', detectSection);
+  clearResultButton();
+
+  $('.channels nav a').click(function(e) {
+    toggleSection($(e.target));
+  });
+
+});
