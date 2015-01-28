@@ -11,6 +11,6 @@ window.RailsApi = {
 
 window.baseUrl = 'http://staging.waywire.com:3001/api';
   // Heroku 'http://channel-api.herokuapp.com/api'
- // Production 'http://waywire.com/admin/services/waywiremanager';
-window.apiKey = 'ee6d1a41ad50080aa019380f61d1fe5f'; 
-// Key from staging.waywire.com:3001
+ // Staging 'http://staging.waywire.com:3001/api';
+window.apiKey = 'da388efde809cb227c3d43ab2f170e5a'
+// Staging: 'ab7562df9a8dc1f7fd3f9462b30ba65f'; 
