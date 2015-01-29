@@ -9,7 +9,7 @@ window.RailsApi = {
   }
 };
 
-window.baseUrl = window.location.hostname+':3001/api';
+window.baseUrl = 'http://'+window.location.hostname+':3001/api';
 window.apiKey;
 
 var keys = {
