@@ -8,16 +8,16 @@ function notify(message, status) {
   }, 3000);
 }
 
-function openModal(container, msg) {
-  $(container+' .modal .content').html(msg);
+function openModal(selector, msg) {
+  $(selector+' .content').html(msg);
   $('.overlay').css('top', $('body').scrollTop());
 
   $('.overlay').addClass('active');
-  $(container+' .modal').addClass('active');
+  $(selector).addClass('active');
   $('body').addClass('noscroll');
 
-  $(container+' .modal .fa-times').click(closeModal);
-  $(container+' .modal .cancel').click(closeModal);
+  $(selector+' .fa-times').click(closeModal);
+  $(selector+' .cancel').click(closeModal);
 }
 
 function closeModal() {

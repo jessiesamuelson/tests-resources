@@ -27,10 +27,9 @@ function clearResultButton() {
 }
 
 function authenticate() {
-  // Uncomment when deployed to waywire.com domain
   var mvp_session = document.cookie.match(/mvp_session=\w+/)[0];
   var sessionId = mvp_session.replace('mvp_session=','');
-  //var sessionId = '9eea613f3d7acca493702b7dc066e132';
+
   $.ajax({
     url: 'http://waywire.com/_check_session?sess_id='+sessionId,
     type: 'GET',

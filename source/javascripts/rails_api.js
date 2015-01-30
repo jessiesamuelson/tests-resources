@@ -9,8 +9,20 @@ window.RailsApi = {
   }
 };
 
-window.baseUrl = 'http://waywire.com:3001/api';
-  // Heroku 'http://channel-api.herokuapp.com/api'
- // Production 'http://waywire.com/admin/services/waywiremanager';
-window.apiKey = 'ab7562df9a8dc1f7fd3f9462b30ba65f'; 
-// Key from staging.waywire.com:3001
+window.baseUrl = 'http://'+window.location.hostname+':3001/api';
+window.apiKey;
+
+var keys = {
+  staging: 'da388efde809cb227c3d43ab2f170e5a',
+  dev: 'a67c31bc8ce25b2906f20108dee41766',
+  production: 'ea2c98f3ef6344164fc1ba7d0b7b89cc'
+};
+
+if (baseUrl.indexOf('staging') > -1) {
+  window.apiKey = keys.staging;
+} else if (baseUrl.indexOf('nessa.dev') > -1 || baseUrl.indexOf('localhost') > -1) {
+  window.apiKey = keys.staging;
+  window.baseUrl = 'http://staging.waywire.com:3001/api';
+} else {
+  window.apiKey = keys.production;
+}
