@@ -1,4 +1,5 @@
 $(function() {
+  $('.channels nav .curator-video').click(openVideoModal);
   $('.curator-video form').submit(getCuratorVideo);
 });
 
@@ -25,4 +26,11 @@ function getCuratorVideo(e) {
   });
 
   showmakerUrlInput.val('');
+}
+
+
+function openVideoModal(e) {
+  e.preventDefault();
+  $('.curator-video.modal').addClass('active');
+  $('.curator-video.modal .fa-times').click(closeModal);
 }

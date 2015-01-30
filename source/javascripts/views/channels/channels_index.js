@@ -24,10 +24,10 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
 
   deleteChannel: function() {
     var that = this;
-    openModal('.channels', 'Are you sure you want to delete this channel?');
+    openModal('.channels .general.modal', 'Are you sure you want to delete this channel?');
 
-    _.extend($('.channels .modal .confirm'), Backbone.Events);
-    $('.channels .modal .confirm').click(function() {
+    _.extend($('.channels .general.modal .confirm'), Backbone.Events);
+    $('.channels .general.modal .confirm').click(function() {
       closeModal();
       that.model.url = baseUrl+'/channels/'+that.model.id;
       that.model.destroy({
@@ -85,7 +85,9 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
     this.showMore();
   },
 
-  updateChannel: function() {
+  updateChannel: function(e) {
+    e.preventDefault();
+    
     var name = $(this.el).find('.name').val(),
         src = $(this.el).find('.src').val(),
         href = $(this.el).find('.href').val(),
