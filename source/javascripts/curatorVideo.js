@@ -17,7 +17,7 @@ function getCuratorVideo(e) {
       'Authorization': 'Token token='+apiKey
     },    
     success: function(data) {
-      $('#new-channel input[name="curator_video"]').val(data);
+      $('.curator-video .mp4').html(data);
     },
     error: function(data) {
       console.log(data)
