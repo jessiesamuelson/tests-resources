@@ -53,7 +53,7 @@ nav.global {
   font-size: 1.1em;
   
   li {
-    display: inline;
+    display: inline-block;
     margin-right: 1em;
   }  
 
@@ -62,6 +62,35 @@ nav.global {
   }
 }
 
+/* Drop down menu */
+.channels nav li.tools {
+  position: relative;
+  float: left;
+  width: 4em;
+  height: 3em; 
+}
+
+.channels nav .dropdown {
+  width: 10em;
+  position: absolute;
+  z-index: 2;
+  margin: .3em 0 0 0;
+  background-color: #fff;
+  visibility: hidden;
+
+  li {
+    display: block;
+    border: 1px solid $orange;
+    margin: 0;
+    padding: .3em .4em;
+  }
+}
+
+.channels nav li.tools:hover {
+  .dropdown {
+    visibility: visible;
+  }
+}
 
 /* PAGINATION */
 .pagination {

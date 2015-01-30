@@ -207,3 +207,17 @@ form#new-channel, form#search-channels {
   }
 }
 
+/* CURATOR VIDEO MODAL */
+.curator-video.modal {
+  h3, p, input {
+    margin: .4em 0;
+  }
+
+  p {
+    color: $light-text;
+  }
+
+  .mp4 {
+    color: $link-blue;
+  }
+}
