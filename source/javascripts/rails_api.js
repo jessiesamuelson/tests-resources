@@ -9,8 +9,8 @@ window.RailsApi = {
   }
 };
 
-window.baseUrl = 'http://staging.waywire.com:3001/api';
+window.baseUrl = 'http://waywire.com:3001/api';
   // Heroku 'http://channel-api.herokuapp.com/api'
  // Production 'http://waywire.com/admin/services/waywiremanager';
-window.apiKey = 'ee6d1a41ad50080aa019380f61d1fe5f'; 
+window.apiKey = 'ab7562df9a8dc1f7fd3f9462b30ba65f'; 
 // Key from staging.waywire.com:3001

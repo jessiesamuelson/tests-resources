@@ -27,7 +27,7 @@
 $(function() {
   RailsApi.initialize();
 
-  authenticate();
+  //authenticate();
   detectSection();
   $(window).on('popstate', detectSection);
   clearResultButton();
