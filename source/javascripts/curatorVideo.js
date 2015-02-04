@@ -1,4 +1,5 @@
 $(function() {
+  $('.channels nav .curator-video').click(openVideoModal);
   $('.curator-video form').submit(getCuratorVideo);
 });
 
@@ -17,7 +18,7 @@ function getCuratorVideo(e) {
       'Authorization': 'Token token='+apiKey
     },    
     success: function(data) {
-      $('#new-channel input[name="curator_video"]').val(data);
+      $('.curator-video .mp4').html(data);
     },
     error: function(data) {
       console.log(data)
@@ -25,4 +26,11 @@ function getCuratorVideo(e) {
   });
 
   showmakerUrlInput.val('');
+}
+
+
+function openVideoModal(e) {
+  e.preventDefault();
+  $('.curator-video.modal').addClass('active');
+  $('.curator-video.modal .fa-times').click(closeModal);
 }
