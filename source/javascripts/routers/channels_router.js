@@ -20,11 +20,11 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
     this.channels.url = url; 
     this.channels.fetch().done(function(data) {
       clearResultButton();
-      if (typeof(data.channels === undefined)) {
-        notify(data.msg, 'error')
-      }
-      else if (data.channels.length === 0) {
-        notify('No channel found.', 'error')
+
+      if (typeof(data.channels) === undefined) {
+        notify(data.msg, 'error');
+      } else if (data.channels.length === 0) {
+        notify('No channel found.', 'error');
       } else {
         that.pagination = new Pagination(paginationDiv, data.pagination);
         that.changePage(); 
@@ -37,7 +37,8 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
     $.ajaxSetup({
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Token token='+apiKey
+        'Authorization': 'Token token='+apiKey,
+        'Cache-Control': 'no-cache'
       }
     });
   },
