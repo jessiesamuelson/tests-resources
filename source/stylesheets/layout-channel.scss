@@ -30,7 +30,8 @@ main.channels {
 
 
 /* SECTIONS */
-section.all-channels {
+section.all-channels,
+section.sort-channels {
   width: 80%;
 
   h2 {
@@ -53,7 +54,8 @@ section.all-channels {
   }
 }
 
-section.all-channels, section.search-channels {
+section.all-channels, 
+section.search-channels {
   div.details, div.curator {
     display: none;
   }
@@ -77,7 +79,7 @@ section.all-channels, section.search-channels {
 }
 
 section.sort-channels {
-  width: 80%;
+  width: 90%;
 }
 
 /* CHANNEL LIST */
@@ -120,6 +122,13 @@ section.sort-channels {
   }
   .delete-channel, .cancel {
     @include button-orange;
+  }
+}
+
+/* Chicklet channel list */
+section.sort-channels .channel-list {
+  li {
+    display: inline-block;
   }
 }
 
