@@ -7,6 +7,7 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
   fetchChannels: function(el, url, paginationDiv) {
     var that = this;
     this.channels = new RailsApi.Collections.Channels();
+    this.channels.comparator = 'sort_order';
     this.chickletListView = new RailsApi.Views.ChickletListView({
       collection: this.channels,
       el: $(el)
@@ -14,11 +15,10 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
 
     this.channels.url = url; 
     this.channels.fetch().done(function(data) {
-      if (typeof(data.channels) === 'undefined') {
-        notify(data.msg, 'error');
-      } else if (data.channels.length === 0) {
-        notify('No channel found.', 'error');
+      if (typeof(data.channels) === 'undefined' || data.channels.length === 0) {
+        notify('Cannot fetch channels.', 'error');
       } else {
+        that.channels.sort();      
         that.pagination = new Pagination(paginationDiv, data.pagination);       
         that.changePage(); 
         that.chickletListView.render();
@@ -75,18 +75,15 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
         channel.save(null, {
           success: function() {
             updateSuccess += 1;
-            console.log('update', updateSuccess)
+            if (orderChange === updateSuccess) {
+              notify('Successfully update chicklet order.', 'success');
+            }            
           }  
         }, {
-          error: function(data) {
-          }  
+          error: function(data) { }  
         });        
       }
     });
-
-    if (orderChange === updateSuccess) {
-      notify('Successfully update chicklet order.', 'success');
-    }
   }
 
 });
