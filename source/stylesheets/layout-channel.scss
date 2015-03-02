@@ -129,6 +129,9 @@ section.sort-channels {
 section.sort-channels .channel-list {
   li {
     display: inline-block;
+    &:hover {
+      cursor: move;
+    }
   }
 }
 

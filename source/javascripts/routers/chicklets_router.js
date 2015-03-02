@@ -14,7 +14,6 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
 
     this.channels.url = url; 
     this.channels.fetch().done(function(data) {
-      console.log(data)
       if (typeof(data.channels) === 'undefined') {
         notify(data.msg, 'error');
       } else if (data.channels.length === 0) {
@@ -22,7 +21,7 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
       } else {
         that.pagination = new Pagination(paginationDiv, data.pagination);
         that.changePage(); 
-        that.chickletListView.render();
+        that.chickletListView.render();       
       }
     });
   },

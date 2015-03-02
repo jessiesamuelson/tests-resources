@@ -12,8 +12,6 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
     return this;
   },
 
-  events: { },
-
   updateOrder: function(e) {
     e.preventDefault();
   }
@@ -34,6 +32,8 @@ RailsApi.Views.ChickletListView = Backbone.View.extend({
       var chickletView = new RailsApi.Views.ChickletView({model: channel});
       that.$el.append(chickletView.render().el);
     });
+    
+    this.$el.sortable();     
   }
 
 });
