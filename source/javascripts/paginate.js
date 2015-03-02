@@ -100,6 +100,7 @@ function Pagination(paginationDiv, paginationObject) {
         this.clip();
     }
     }
+    this.page = this.targetNum;
     return this.targetNum;
   };
 
