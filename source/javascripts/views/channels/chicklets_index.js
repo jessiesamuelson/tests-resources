@@ -1,19 +1,15 @@
 RailsApi.Views.ChickletView = Backbone.View.extend({
   tagName: 'li',
-  template: _.template("<img src=\'<%= src %>\' data=\'<%- id %>\' />"), 
+  template: _.template("<img src=\'<%= src %>\' data-id=\'<%- id %>\' data-sort=\'<%- sort_order %>\' class=\'chicklet\'/>"), 
 
   initialize: function() {
-    this.listenTo(this.model, 'change', this.render);
+    //this.listenTo(this.model, 'change', this.render);
   },
 
   render: function() {
     var channel = this.template(this.model.attributes);
     this.$el.append(channel);
     return this;
-  },
-
-  updateOrder: function(e) {
-    e.preventDefault();
   }
 
 });
@@ -21,7 +17,7 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
 
 RailsApi.Views.ChickletListView = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(this.collection, 'all', this.render);
+    //this.listenTo(this.collection, 'all', this.render);
   },
 
   render: function() {
