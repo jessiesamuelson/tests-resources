@@ -21,7 +21,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
     this.channels.fetch().done(function(data) {
       clearResultButton();
 
-      if (typeof(data.channels) === undefined) {
+      if (typeof(data.channels) === 'undefined') {
         notify(data.msg, 'error');
       } else if (data.channels.length === 0) {
         notify('No channel found.', 'error');
