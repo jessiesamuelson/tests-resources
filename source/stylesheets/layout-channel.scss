@@ -2,6 +2,7 @@
 
 main.channels {
   width: 960px;
+  min-height: 100%;
   margin: 0 auto;
   overflow: auto;
 }
@@ -73,6 +74,10 @@ section.all-channels, section.search-channels {
       color: $link-blue2;
     }
   }
+}
+
+section.sort-channels {
+  width: 80%;
 }
 
 /* CHANNEL LIST */
