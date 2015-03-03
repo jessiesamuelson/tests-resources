@@ -27,17 +27,9 @@ function closeModal() {
 }
 
 function updateUrl(url, pageNum) {
-  var pageParams = 'page='+pageNum;
-  currentParams = url.match(/page=\d+/);
-  if (currentParams === null) {
-    if (url.indexOf('?') > -1) {
-      pageParams = '&'+pageParams;
-    } else {
-      pageParams = '?'+pageParams;
-    }
-    url = url + pageParams;
-  } else {
-    url = url.replace(/page=\d+/, pageParams)
-  }
+  var currentPerPage = url.match(/per_page=\d+/)[0].replace('per_page=', '') || '20',
+      oldParams  = url.match(/\?.+/)[0],
+      newParams = '?per_page='+currentPerPage+'&page='+pageNum;
+  url = url.replace(oldParams, newParams);
   return url;
 }
