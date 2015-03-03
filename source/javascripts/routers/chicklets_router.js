@@ -1,7 +1,7 @@
 RailsApi.Routers.Chicklets = Backbone.Router.extend({
   initialize: function() {
     this.authenticateApi();
-    this.fetchChannels('.sort-channels .channel-list', baseUrl+'/channels', '.sort-channels .pagination');
+    this.fetchChannels('.sort-channels .channel-list', baseUrl+'/channels?per_page=50', '.sort-channels .pagination');
   },
 
   fetchChannels: function(el, url, paginationDiv) {
@@ -19,7 +19,7 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
         notify('Cannot fetch channels.', 'error');
       } else {
         that.channels.sort();      
-        that.pagination = new Pagination(paginationDiv, data.pagination);       
+        that.pagination = new Pagination(paginationDiv, data.pagination);     
         that.changePage(); 
         that.chickletListView.render();
         $('section.sort-channels .save').click(function(e) {
@@ -50,6 +50,7 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
         that.channels.fetch({
           success: function() {
             that.pagination.doneLoading();
+            that.chickletListView.render();
           }
         });
       }
@@ -64,19 +65,21 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
     
     _.each($('.chicklet'), function(chicklet) {
       var currentOrder = parseInt($(chicklet).attr('data-sort')),
-          newOrder = $('.chicklet').index(chicklet) + 1,
+          newOrder = offset + $('.chicklet').index(chicklet) + 1,
           id = parseInt($(chicklet).attr('data-id'));     
 
       if (newOrder != currentOrder) {
         orderChange += 1;
         var channel = that.channels.where({id: id})[0];
-        channel.set({sort_order: offset + newOrder});
+        channel.set({sort_order: newOrder});
         channel.url = baseUrl + '/channels/' + id;
         channel.save(null, {
           success: function() {
             updateSuccess += 1;
             if (orderChange === updateSuccess) {
               notify('Successfully update chicklet order.', 'success');
+              that.channels.sort();
+              that.chickletListView.render();
             }            
           }  
         }, {

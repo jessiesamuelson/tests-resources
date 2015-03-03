@@ -17,7 +17,7 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
 
 RailsApi.Views.ChickletListView = Backbone.View.extend({
   initialize: function() {
-    //this.listenTo(this.collection, 'all', this.render);
+    //this.listenTo(this.collection, 'change', this.render);
   },
 
   render: function() {

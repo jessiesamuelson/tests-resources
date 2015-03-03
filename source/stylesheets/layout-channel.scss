@@ -2,9 +2,7 @@
 
 main.channels {
   width: 960px;
-  min-height: 100%;
   margin: 0 auto;
-  overflow: auto;
 }
 
 .channels {
@@ -14,7 +12,7 @@ main.channels {
 
   section {
     display: none;
-    width: 60%;
+    width: 80%;
     margin: 2em auto 0 auto;
   }
 
@@ -32,8 +30,6 @@ main.channels {
 /* SECTIONS */
 section.all-channels,
 section.sort-channels {
-  width: 80%;
-
   h2 {
     font-size: 1.8em;
     display: inline-block;
@@ -80,6 +76,10 @@ section.search-channels {
 
 section.sort-channels {
   width: 90%;
+  .save {
+    float: right;
+    margin-bottom: 2em;
+  }
 }
 
 /* CHANNEL LIST */
@@ -166,8 +166,6 @@ section.sort-channels .channel-list {
 
 /* Search channels */
 section.search-channels {
-  width: 80%;
-
   #search-channels {
     width: 60%;
   }
