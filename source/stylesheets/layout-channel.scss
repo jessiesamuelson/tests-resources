@@ -80,6 +80,10 @@ section.sort-channels {
     float: right;
     margin-bottom: 2em;
   }
+
+  .chicklet {
+    width: 158px;
+  }
 }
 
 /* CHANNEL LIST */
@@ -129,9 +133,15 @@ section.sort-channels {
 section.sort-channels .channel-list {
   li {
     display: inline-block;
-    &:hover {
-      cursor: move;
-    }
+  }
+  .chicklet:hover {
+    cursor: move;
+  }
+  .edit:hover {
+    cursor: pointer;
+  }
+  .order input {
+    width: auto;
   }
 }
 

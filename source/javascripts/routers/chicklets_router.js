@@ -1,7 +1,7 @@
 RailsApi.Routers.Chicklets = Backbone.Router.extend({
   initialize: function() {
     this.authenticateApi();
-    this.fetchChannels('.sort-channels .channel-list', baseUrl+'/channels?per_page=50', '.sort-channels .pagination');
+    this.fetchChannels('.sort-channels .channel-list', baseUrl+'/channels?per_page=30', '.sort-channels .pagination');
   },
 
   fetchChannels: function(el, url, paginationDiv) {
