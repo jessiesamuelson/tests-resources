@@ -97,6 +97,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
         that.channels.fetch({
           success: function() {
             that.pagination.doneLoading();
+            that.channelListView.render();
           }
         });
       }

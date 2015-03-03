@@ -27,9 +27,19 @@ function closeModal() {
 }
 
 function updateUrl(url, pageNum) {
-  var currentPerPage = url.match(/per_page=\d+/)[0].replace('per_page=', '') || '20',
-      oldParams  = url.match(/\?.+/)[0],
-      newParams = '?per_page='+currentPerPage+'&page='+pageNum;
-  url = url.replace(oldParams, newParams);
+  var perPage = '20',
+      oldParams;
+  if (url.match(/per_page=\d+/) != null) {
+    perPage = url.match(/per_page=\d+/)[0].replace('per_page=', '');
+  }
+  var newParams = '?per_page='+perPage+'&page='+pageNum;
+
+  if (url.match(/\?.+/) != null) {
+    oldParams = url.match(/\?.+/)[0];
+    url = url.replace(oldParams, newParams);
+  } else {
+    url += newParams;
+  } 
+  
   return url;
 }
