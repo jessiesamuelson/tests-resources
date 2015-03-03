@@ -39,6 +39,7 @@ section.sort-channels {
   .pagination {
     float: right;
     margin: .5em 0 0 0;
+    clear: both;
   }
 
   p {
@@ -76,14 +77,25 @@ section.search-channels {
 
 section.sort-channels {
   width: 90%;
-  .save {
+  .actions {
+    overflow: auto;
+    margin: 1em 2em 2em 0;
+  }
+  .save, .refresh {
     float: right;
-    margin-bottom: 2em;
   }
 
   .chicklet {
     width: 158px;
   }
+
+  .instruction {
+    width: 80%;
+    margin: 0 auto 1em auto;
+    li {
+      line-height: 1.2em;
+    }  
+  }  
 }
 
 /* CHANNEL LIST */
@@ -137,11 +149,19 @@ section.sort-channels .channel-list {
   .chicklet:hover {
     cursor: move;
   }
-  .edit:hover {
-    cursor: pointer;
-  }
-  .order input {
-    width: auto;
+
+  .order-form {
+    text-align: center;
+    .edit:hover {
+      cursor: pointer;
+    }
+    .save {
+      float: none;
+    }
+    input {
+      width: 2em;
+      margin-left: .5em;
+    }    
   }
 }
 

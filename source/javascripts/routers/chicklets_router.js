@@ -1,7 +1,7 @@
 RailsApi.Routers.Chicklets = Backbone.Router.extend({
   initialize: function() {
     this.authenticateApi();
-    this.fetchChannels('.sort-channels .channel-list', baseUrl+'/channels?per_page=30', '.sort-channels .pagination');
+    this.fetchChannels('.sort-channels .channel-list', baseUrl+'/channels?pagination=false', '.sort-channels .pagination');
   },
 
   fetchChannels: function(el, url, paginationDiv) {
@@ -19,8 +19,8 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
         notify('Cannot fetch channels.', 'error');
       } else {
         that.channels.sort();      
-        that.pagination = new Pagination(paginationDiv, data.pagination);     
-        that.changePage(); 
+        // that.pagination = new Pagination(paginationDiv, data.pagination);     
+        // that.changePage(); 
         that.chickletListView.render();
         $('section.sort-channels .save').click(function(e) {
           e.preventDefault();
@@ -59,13 +59,13 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
 
   updateOrder: function() {
     var that = this;   
-    var offset = (that.pagination.page - 1) * that.pagination.perPage;
+    //var offset = (that.pagination.page - 1) * that.pagination.perPage;
     var orderChange = 0,
         updateSuccess = 0;
     
     _.each($('.chicklet'), function(chicklet) {
       var currentOrder = parseInt($(chicklet).attr('data-sort')),
-          newOrder = offset + $('.chicklet').index(chicklet) + 1,
+          newOrder = $('.chicklet').index(chicklet) + 1,
           id = parseInt($(chicklet).attr('data-id'));     
 
       if (newOrder != currentOrder) {

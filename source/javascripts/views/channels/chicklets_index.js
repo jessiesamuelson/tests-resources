@@ -31,7 +31,6 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
     var that = this;
     var currentOrder = this.$el.find('.order input').attr('placeholder'),
         newOrder = this.$el.find('.order input').val();
-
     if (newOrder != currentOrder) {
       var channel = this.model;
       channel.set({sort_order: newOrder});
@@ -40,7 +39,8 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
         success: function() {
           notify('Successfully update chicklet order.', 'success');
           that.changeOrderSuccess();
-          // rerender collection          
+          $('.sort-channels .refresh').trigger('click');
+          // a hack to sort collection and render view
         }  
       }, {
         error: function(data) { }  
@@ -61,6 +61,12 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
 RailsApi.Views.ChickletListView = Backbone.View.extend({
   initialize: function() {
     //this.listenTo(this.collection, 'change', this.render);
+    var that = this;
+    $('.sort-channels .refresh').click(function(e) {
+      e.preventDefault();
+      that.collection.sort();
+      that.render();
+    });
   },
 
   render: function() {
