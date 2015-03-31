@@ -16,8 +16,9 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
       collection: this.channels,
       el: $(el)
     });
-
-    this.channels.url = url; 
+    
+    this.channels.comparator = 'sort_order';
+    this.channels.url        = url; 
     this.channels.fetch().done(function(data) {
       clearResultButton();
 
@@ -26,6 +27,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
       } else if (data.channels.length === 0) {
         notify('No channel found.', 'error');
       } else {
+        that.channels.sort();
         that.pagination = new Pagination(paginationDiv, data.pagination);
         that.changePage(); 
         that.channelListView.render();
@@ -52,6 +54,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           src = $('input[name="src"]').val(),
           href = $('input[name="href"]').val(),
           categoryArray = $('input[name="category_array"]').val().toLowerCase().split(','),
+          sort_order = parseInt($('input[name="sort_order"]').val()),
           desc = $('input[name="desc"]').val(),
           keywords = $(this.el).find('input[name="keywords"]').val(),
           twitter_widget_id = $('input[name="twitter_widget_id"]').val(),
@@ -64,8 +67,8 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           curator_desc = $('input[name="curator_desc"]').val();
 
       var newChannel = new RailsApi.Models.Channel({
-        name: name, src: src,
-        href: href, category_array: categoryArray,
+        name: name, src: src, href: href, 
+        category_array: categoryArray, sort_order: sort_order,
         desc: desc, keywords: keywords,
         twitter_widget_id: twitter_widget_id,
         banner_img: banner_img, mobile_banner: mobile_banner,
