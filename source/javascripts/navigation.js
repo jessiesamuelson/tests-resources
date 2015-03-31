@@ -40,3 +40,17 @@ function authenticate() {
     }
   });
 }
+
+function loading(container) {
+  var channelList = container.find('.channel-list'),
+      loader = container.find('.loader');
+  loader.addClass('active');
+  channelList.addClass('hidden');
+};  
+
+function doneLoading(container) {
+  var channelList = container.find('.channel-list'),
+      loader = container.find('.loader');
+  loader.removeClass('active');
+  channelList.removeClass('hidden');
+};

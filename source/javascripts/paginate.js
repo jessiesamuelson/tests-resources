@@ -98,7 +98,7 @@ function Pagination(paginationDiv, paginationObject) {
       this.transition();
       if (this.numPages > this.numVisible) {
         this.clip();
-    }
+      }
     }
     this.page = this.targetNum;
     return this.targetNum;
