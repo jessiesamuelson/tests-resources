@@ -80,9 +80,15 @@ section.sort-channels {
   .actions {
     overflow: auto;
     margin: 1em 2em 2em 0;
-  }
-  .save, .refresh {
-    float: right;
+    button {
+      float: right;
+    }
+    .save {
+      @include button-orange;
+    }
+    .refresh {
+      @include button-green;
+    }
   }
 
   .chicklet {

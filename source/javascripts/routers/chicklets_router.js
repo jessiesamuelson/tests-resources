@@ -6,6 +6,8 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
 
   fetchChannels: function(el, url, paginationDiv) {
     var that = this;
+    loading($('.sort-channels'));
+
     this.channels = new RailsApi.Collections.Channels();
     this.channels.comparator = 'sort_order';
     this.chickletListView = new RailsApi.Views.ChickletListView({
@@ -15,6 +17,7 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
 
     this.channels.url = url; 
     this.channels.fetch().done(function(data) {
+      doneLoading($('.sort-channels'));
       if (typeof(data.channels) === 'undefined' || data.channels.length === 0) {
         notify('Cannot fetch channels.', 'error');
       } else {
@@ -62,6 +65,7 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
     //var offset = (that.pagination.page - 1) * that.pagination.perPage;
     var orderChange = 0,
         updateSuccess = 0;
+    loading($('.sort-channels'));
     
     _.each($('.chicklet'), function(chicklet) {
       var currentOrder = parseInt($(chicklet).attr('data-sort')),
@@ -80,6 +84,7 @@ RailsApi.Routers.Chicklets = Backbone.Router.extend({
               notify('Successfully update chicklet order.', 'success');
               that.channels.sort();
               that.chickletListView.render();
+              doneLoading($('.sort-channels'));
             }            
           }  
         }, {
