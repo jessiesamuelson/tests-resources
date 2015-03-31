@@ -1,6 +1,6 @@
 RailsApi.Views.ChickletView = Backbone.View.extend({
   tagName: 'li',
-  template: _.template("<div class=\'channel\'><img src=\'<%= src %>\' data-id=\'<%- id %>\' data-sort=\'<%- sort_order %>\' class=\'chicklet\'/><form class='order-form'>Order <span class=\'order\'><%- sort_order %></span>  <span class=\'edit\'><i class=\'fa fa-minus\'></i></span></form></div>"), 
+  template: _.template("<div class=\'channel\'><img src=\'<%= src %>\' data-id=\'<%- id %>\' alt=\'<%- name %>\' data-sort=\'<%- sort_order %>\' class=\'chicklet\'/><form class='order-form'>Order <span class=\'order\'><%- sort_order %></span>  <span class=\'edit\'><i class=\'fa fa-minus\'></i></span></form></div>"), 
 
   initialize: function() {
     //this.listenTo(this.model, 'change', this.render);
@@ -22,6 +22,7 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
     var orderEl = this.$el.find('.order'),
         order  = orderEl.html();
         orderInput = $('<input>').val(order).attr('placeholder', order);  
+    
     orderEl = orderEl.empty().append(orderInput);
     var editEl = this.$el.find('.edit');
     editEl.html('').removeClass('edit').append('<i class="fa fa-check"></i>').addClass('save');
@@ -52,7 +53,8 @@ RailsApi.Views.ChickletView = Backbone.View.extend({
 
   changeOrderSuccess: function() {
     this.$el.find('.order').html(this.model.attributes.sort_order);
-    this.$el.find('.save').html('').removeClass('save').append("<i class='fa fa-minus'></i>").addClass('edit');
+    this.$el.find('.save').html("<i class='fa fa-minus'></i>")
+            .removeClass('save').addClass('edit');
   }
 
 });
