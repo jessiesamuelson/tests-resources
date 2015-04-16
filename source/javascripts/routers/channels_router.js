@@ -52,6 +52,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
       e.preventDefault();
       var name = $('input[name="name"]').val(),
           src = $('input[name="src"]').val(),
+          image_large = $('input[name="image_large"]').val(),
           href = $('input[name="href"]').val(),
           categoryArray = $('input[name="category_array"]').val().toLowerCase().split(','),
           sort_order = parseInt($('input[name="sort_order"]').val()),
@@ -67,7 +68,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           curator_desc = $('input[name="curator_desc"]').val();
 
       var newChannel = new RailsApi.Models.Channel({
-        name: name, src: src, href: href, 
+        name: name, src: src, image_large: image_large, href: href, 
         category_array: categoryArray, sort_order: sort_order,
         desc: desc, keywords: keywords,
         twitter_widget_id: twitter_widget_id,
