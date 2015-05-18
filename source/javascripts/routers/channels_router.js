@@ -52,6 +52,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
       e.preventDefault();
       var name = $('input[name="name"]').val(),
           src = $('input[name="src"]').val(),
+          image_large = $('input[name="image_large"]').val(),
           href = $('input[name="href"]').val(),
           categoryArray = $('input[name="category_array"]').val().toLowerCase(),
           sort_order = $('input[name="sort_order"]').val(),
