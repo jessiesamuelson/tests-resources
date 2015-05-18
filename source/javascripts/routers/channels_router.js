@@ -56,7 +56,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           href = $('input[name="href"]').val(),
           categoryArray = $('input[name="category_array"]').val().toLowerCase(),
           sort_order = $('input[name="sort_order"]').val(),
-          desc = $('input[name="desc"]').val(),
+          desc = escapeHtml($('input[name="desc"]').val()),
           keywords = $(this.el).find('input[name="keywords"]').val(),
           twitter_widget_id = $('input[name="twitter_widget_id"]').val(),
           community_site_id = $('input[name="community_site_id"]').val(),
@@ -65,7 +65,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           curator_name = $('input[name="curator_name"]').val(),
           curator_img = $('input[name="curator_img"]').val(),
           curator_video = $('input[name="curator_video"]').val(),
-          curator_desc = $('input[name="curator_desc"]').val();
+          curator_desc = escapeHtml($('input[name="curator_desc"]').val());
       if (sort_order !== '') { 
         sort_order = parseInt(sort_order); 
       } 
@@ -80,7 +80,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
         curator_video: curator_video, curator_desc: curator_desc
       };
      
-      var newChannel = new RailsApi.Models.Channel(escapeHtml(channelObj));
+      var newChannel = new RailsApi.Models.Channel(channelObj);
       newChannel.url = baseUrl+'/channels';
       newChannel.save(null, {
         success: function(data) {
