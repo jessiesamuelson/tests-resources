@@ -43,3 +43,34 @@ function updateUrl(url, pageNum) {
   
   return url;
 }
+
+function escapeHtml(input) {
+ var entityMap = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': '&quot;',
+    "'": '&#39;',
+    "/": '&#x2F;'
+  };
+
+  var escape = function (string) {
+    return String(string).replace(/[&<>"'\/]/g, function (s) {
+      return entityMap[s];
+    });
+  }
+
+  if (typeof(input) === 'object') {
+    for (key in input) {
+      input[key] = escape(input[key]);
+    }
+  } else if (typeof(input) === 'string') {
+    input = escape(input);
+  } else if (typeof(input) === 'array') {
+    for (element in input) {
+      element = escape(element);
+    }
+  }
+
+  return input;
+}
