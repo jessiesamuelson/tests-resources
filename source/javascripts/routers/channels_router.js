@@ -59,7 +59,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           desc = escapeHtml($('input[name="desc"]').val()),
           keywords = $(this.el).find('input[name="keywords"]').val(),
           twitter_widget_id = $('input[name="twitter_widget_id"]').val(),
-          community_site_id = $('input[name="community_site_id"]').val(),
+          community_site_nid = $('input[name="community_site_nid"]').val(),
           banner_img = $('input[name="banner_img"]').val(),
           mobile_banner = $('input[name="mobile_banner"]').val(),
           curator_name = $('input[name="curator_name"]').val(),
@@ -74,7 +74,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
         name: name, src: src, href: href, 
         category_array: categoryArray, sort_order: sort_order,
         desc: desc, keywords: keywords,
-        twitter_widget_id: twitter_widget_id,
+        twitter_widget_id: twitter_widget_id, community_site_nid: community_site_nid,
         banner_img: banner_img, mobile_banner: mobile_banner,
         curator_name: curator_name, curator_img: curator_img,
         curator_video: curator_video, curator_desc: curator_desc

@@ -1,6 +1,6 @@
 RailsApi.Views.ChannelView = Backbone.View.extend({
   tagName: 'li',
-  template: _.template("<h4 class=\'name\'> <span class=\'value\'> <%= name %> <\/span> (Id: <%= id %>)<\/h4> <p class=\'href\'> <label>Link:<\/label> <span class=\'value\'> <%= href %> <\/span> <\/p> <p class='src'> <label>Chicklet:<\/label> <span class=\'value\'> <%= src %> <\/span> <\/p> <p class='image_large'> <label>Image large:<\/label> <span class=\'value\'> <%= image_large %> <\/span> <\/p> <p class=\'category_array\'> <label>Categories:<\/label> <span class=\'value\'> <%= category_array %> <\/span> <\/p> <p class=\'sort_order\'> <label>Sort order:<\/label> <span class=\'value\'> <%= sort_order %> <\/span> <\/p> <div class=\'more\'> <span class=\'details\'>Details<\/span> <span class=\'curator\'>Curator info<\/span> <\/div> <div class=\'details\'> <p class=\'desc\'> <label>Description:<\/label> <span class=\'value\'> <%= desc %> <\/span> <\/p> <p class=\'keywords\'> <label> Keywords:<\/label> <span class=\'value\'> <%= keywords %> <\/p> <p class=\'mobile_banner\'> <label>Mobile banner:</label> <span class=\'value\'> <%= mobile_banner %> <\/span> <\/p> <p class=\'banner_img\'> <label>Channel banner:<\/label> <span class=\'value\'> <%= banner_img %> <\/span> <\/p> <p class=\'twitter_widget_id\'> <label>Twitter widget id:<\/label> <span class=\'value\'> <%= twitter_widget_id %> <\/span> <\/p> <\/div> <div class=\'curator\'> <p class=\'curator_img\'> <label>Curator image:<\/label> <span class=\'value\'> <%= curator_img %> <\/span> <\/p> <p class=\'curator_name\'> <label>Curator name:<\/label> <span class=\'value\'> <%= curator_name %> <\/span> <\/p> <p class=\'curator_desc\'> <label>Curator description:<\/label> <span class=\'value\'> <%= curator_desc %> <\/span> <\/p> <p class=\'curator_video\'> <label>Curator video:<\/label> <span class=\'value\'> <%= curator_video %> <\/span> <\/p> <\/div> <button class=\'edit-channel\' data=\'<%- id %>\'>Edit<\/button> <button class=\'delete-channel\' data=\'<%- id %>\'>Delete<\/button>"), 
+  template: _.template("<h4 class=\'name\'> <span class=\'value\'> <%= name %> <\/span> (Id: <%= id %>)<\/h4> <p class=\'href\'> <label>Link:<\/label> <span class=\'value\'> <%= href %> <\/span> <\/p> <p class='src'> <label>Chicklet:<\/label> <span class=\'value\'> <%= src %> <\/span> <\/p> <p class='image_large'> <label>Image large:<\/label> <span class=\'value\'> <%= image_large %> <\/span> <\/p> <p class=\'category_array\'> <label>Categories:<\/label> <span class=\'value\'> <%= category_array %> <\/span> <\/p> <p class=\'sort_order\'> <label>Sort order:<\/label> <span class=\'value\'> <%= sort_order %> <\/span> <\/p> <div class=\'more\'> <span class=\'details\'>Details<\/span> <span class=\'curator\'>Curator info<\/span> <\/div> <div class=\'details\'> <p class=\'desc\'> <label>Description:<\/label> <span class=\'value\'> <%= desc %> <\/span> <\/p> <p class=\'keywords\'> <label> Keywords:<\/label> <span class=\'value\'> <%= keywords %> <\/p> <p class=\'mobile_banner\'> <label>Mobile banner:</label> <span class=\'value\'> <%= mobile_banner %> <\/span> <\/p> <p class=\'banner_img\'> <label>Channel banner:<\/label> <span class=\'value\'> <%= banner_img %> <\/span> <\/p> <p class=\'twitter_widget_id\'> <label>Twitter widget id:<\/label> <span class=\'value\'><%= twitter_widget_id %><\/span> <\/p> <p class=\'community_site_nid\'> <label>Community site nid:<\/label> <span class=\'value\'><%= community_site_nid %><\/span> <\/p> <\/div> <div class=\'curator\'> <p class=\'curator_img\'> <label>Curator image:<\/label> <span class=\'value\'> <%= curator_img %> <\/span> <\/p> <p class=\'curator_name\'> <label>Curator name:<\/label> <span class=\'value\'> <%= curator_name %> <\/span> <\/p> <p class=\'curator_desc\'> <label>Curator description:<\/label> <span class=\'value\'> <%= curator_desc %> <\/span> <\/p> <p class=\'curator_video\'> <label>Curator video:<\/label> <span class=\'value\'> <%= curator_video %> <\/span> <\/p> <\/div> <button class=\'edit-channel\' data=\'<%- id %>\'>Edit<\/button> <button class=\'delete-channel\' data=\'<%- id %>\'>Delete<\/button>"), 
 
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
@@ -62,7 +62,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         deleteButton = $(this.el).find('.delete-channel'),
         fields = [];
     fields.push(name, src, image_large, href, category_array, sort_order, desc,
-      keywords, mobile_banner, banner_img, twitter_widget_id,
+      keywords, mobile_banner, banner_img, twitter_widget_id, community_site_nid,
       curator_name, curator_img, curator_desc, curator_video);
 
     _.each(fields, function(field) {
@@ -98,6 +98,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         desc = escapeHtml($(this.el).find('.desc').val()),
         keywords = $(this.el).find('.keywords').val(),
         twitter_widget_id = $(this.el).find('.twitter_widget_id').val(),
+        community_site_nid = $(this.el).find('.community_site_nid').val(),
         mobile_banner = $(this.el).find('.mobile_banner').val(),
         banner_img = $(this.el).find('.banner_img').val(),
         curator_name = $(this.el).find('.curator_name').val(),
@@ -113,7 +114,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
       href: href, category_array: category_array,
       sort_order: sort_order, desc: desc, keywords: keywords,
       mobile_banner: mobile_banner, banner_img: banner_img,
-      twitter_widget_id: twitter_widget_id,
+      twitter_widget_id: twitter_widget_id, community_site_nid: community_site_nid,
       curator_name: curator_name, curator_img: curator_img,
       curator_desc: curator_desc, curator_video: curator_video
     };
