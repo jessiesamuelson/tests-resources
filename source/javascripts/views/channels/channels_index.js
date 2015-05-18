@@ -92,8 +92,8 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
     var name = $(this.el).find('.name').val(),
         src = $(this.el).find('.src').val(),
         href = $(this.el).find('.href').val(),
-        category_array = $(this.el).find('.category_array').val().toLowerCase().split(','),
-        sort_order = parseInt($(this.el).find('.sort_order').val()),
+        category_array = $(this.el).find('.category_array').val().toLowerCase(),
+        sort_order = $(this.el).find('.sort_order').val(),
         desc = $(this.el).find('.desc').val(),
         keywords = $(this.el).find('.keywords').val(),
         twitter_widget_id = $(this.el).find('.twitter_widget_id').val(),
@@ -104,8 +104,10 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         curator_desc = $(this.el).find('.curator_desc').val(),
         curator_video = $(this.el).find('.curator_video').val(),
         id = $(this.el).find('.save-channel').attr('data');
-
-    this.model.set({
+    if (sort_order !== '') { 
+      sort_order = parseInt(sort_order); 
+    } 
+    var channelObj = {
       name: name, src: src,
       href: href, category_array: category_array,
       sort_order: sort_order, desc: desc, keywords: keywords,
@@ -113,8 +115,9 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
       twitter_widget_id: twitter_widget_id,
       curator_name: curator_name, curator_img: curator_img,
       curator_desc: curator_desc, curator_video: curator_video
-    });
-
+    };
+    
+    this.model.set(escapeHtml(channelObj));
     this.model.url = baseUrl+'/channels/'+id;
     this.model.save(null, {
       success: function(data) {
