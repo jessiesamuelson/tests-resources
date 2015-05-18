@@ -55,6 +55,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         mobile_banner = $(this.el).find('.banner_img'),
         banner_img = $(this.el).find('.mobile_banner'),
         twitter_widget_id = $(this.el).find('.twitter_widget_id'),
+        community_site_nid = $(this.el).find('.community_site_nid'),
         curator_img = $(this.el).find('.curator_img'),
         curator_name = $(this.el).find('.curator_name'),
         curator_desc = $(this.el).find('.curator_desc'),
