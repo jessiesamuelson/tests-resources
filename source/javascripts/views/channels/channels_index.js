@@ -103,7 +103,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         banner_img = $(this.el).find('.banner_img').val(),
         curator_name = $(this.el).find('.curator_name').val(),
         curator_img = $(this.el).find('.curator_img').val(),
-        curator_desc = escapeHtml($(this.el).find('.curator_desc').val()),
+        curator_desc = $(this.el).find('.curator_desc').val(),
         curator_video = $(this.el).find('.curator_video').val(),
         id = $(this.el).find('.save-channel').attr('data');
     if (sort_order !== '') { 
