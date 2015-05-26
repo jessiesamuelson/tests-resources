@@ -61,6 +61,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         curator_video = $(this.el).find('.curator_video'),
         editButton = $(this.el).find('.edit-channel'),
         deleteButton = $(this.el).find('.delete-channel'),
+        community_site_nid = $(this.el).find('.community_site_nid')
         fields = [];
     fields.push(name, src, image_large, href, category_array, sort_order, desc,
       keywords, mobile_banner, banner_img, twitter_widget_id, community_site_nid,
@@ -104,7 +105,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         banner_img = $(this.el).find('.banner_img').val(),
         curator_name = $(this.el).find('.curator_name').val(),
         curator_img = $(this.el).find('.curator_img').val(),
-        curator_desc = escapeHtml($(this.el).find('.curator_desc').val()),
+        curator_desc = $(this.el).find('.curator_desc').val(),
         curator_video = $(this.el).find('.curator_video').val(),
         id = $(this.el).find('.save-channel').attr('data');
     if (sort_order !== '') { 
