@@ -60,6 +60,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
         curator_video = $(this.el).find('.curator_video'),
         editButton = $(this.el).find('.edit-channel'),
         deleteButton = $(this.el).find('.delete-channel'),
+        community_site_nid = $(this.el).find('.community_site_nid')
         fields = [];
     fields.push(name, src, image_large, href, category_array, sort_order, desc,
       keywords, mobile_banner, banner_img, twitter_widget_id, community_site_nid,

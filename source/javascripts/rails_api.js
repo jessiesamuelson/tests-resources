@@ -20,7 +20,7 @@ var keys = {
 
 if (baseUrl.indexOf('staging') > -1) {
   window.apiKey = keys.staging;
-} else if (baseUrl.indexOf('nessa.dev') > -1 || baseUrl.indexOf('localhost') > -1) {
+} else if (baseUrl.indexOf('.dev.magnify.net') > -1 || baseUrl.indexOf('localhost') > -1) {
   window.apiKey = keys.dev;
 } else {
   window.apiKey = keys.production;
