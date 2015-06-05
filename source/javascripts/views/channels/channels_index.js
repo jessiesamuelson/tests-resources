@@ -112,7 +112,7 @@ RailsApi.Views.ChannelView = Backbone.View.extend({
       sort_order = parseInt(sort_order); 
     } 
     var channelObj = {
-      name: name, src: src,
+      name: name, src: src, image_large: image_large,
       href: href, category_array: category_array,
       sort_order: sort_order, desc: desc, keywords: keywords,
       mobile_banner: mobile_banner, banner_img: banner_img,
