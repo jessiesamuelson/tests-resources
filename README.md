@@ -10,3 +10,4 @@ Client-side app using the Channel Manager API
 
 
 URL: http://waywire.com/admin/services/waywiremanager
+DEV ENV URL: http://waywire.com.[DEV-NAME].dev.magnify.net/admin/services/waywiremanager
