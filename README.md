@@ -7,3 +7,6 @@ Client-side app using the Channel Manager API
 * Plug in the appropriate API url (window.baseUrl) in `source/javascripts/rails_api.js`
 * Obtain API token for `window.apiKey` in `rails_api.js`
 * For more info checkout [Middleman docs](https://middlemanapp.com/)
+
+
+URL: http://waywire.com/admin/services/waywiremanager
