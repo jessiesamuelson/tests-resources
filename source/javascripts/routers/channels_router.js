@@ -56,6 +56,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           href = $('input[name="href"]').val(),
           categoryArray = $('input[name="category_array"]').val().toLowerCase(),
           sort_order = $('input[name="sort_order"]').val(),
+          analytics = $('input[name="analytics"]').val(),
           desc = escapeHtml($('input[name="desc"]').val()),
           keywords = $(this.el).find('input[name="keywords"]').val(),
           twitter_widget_id = $('input[name="twitter_widget_id"]').val(),
@@ -73,6 +74,7 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
       var channelObj = {
         name: name, src: src, href: href, 
         category_array: categoryArray, sort_order: sort_order,
+        analytics: analytics,
         desc: desc, keywords: keywords,
         twitter_widget_id: twitter_widget_id, community_site_nid: community_site_nid,
         banner_img: banner_img, mobile_banner: mobile_banner,
