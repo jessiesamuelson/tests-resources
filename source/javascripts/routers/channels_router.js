@@ -66,7 +66,10 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
           curator_name = $('input[name="curator_name"]').val(),
           curator_img = $('input[name="curator_img"]').val(),
           curator_video = $('input[name="curator_video"]').val(),
-          curator_desc = escapeHtml($('input[name="curator_desc"]').val());
+          curator_desc = escapeHtml($('input[name="curator_desc"]').val()),
+          twitter_url = $('input[name="twitter_url"]').val(),
+					facebook_url = $('input[name="facebook_url"]').val(),
+					personal_url = $('input[name="personal_url"]').val();
       if (sort_order !== '') { 
         sort_order = parseInt(sort_order); 
       } 
@@ -79,7 +82,8 @@ RailsApi.Routers.Channels = Backbone.Router.extend({
         twitter_widget_id: twitter_widget_id, community_site_nid: community_site_nid,
         banner_img: banner_img, mobile_banner: mobile_banner,
         curator_name: curator_name, curator_img: curator_img,
-        curator_video: curator_video, curator_desc: curator_desc
+        curator_video: curator_video, curator_desc: curator_desc,
+        twitter_url: twitter_url, facebook_url: facebook_url, personal_url: personal_url
       };
      
       var newChannel = new RailsApi.Models.Channel(channelObj);
