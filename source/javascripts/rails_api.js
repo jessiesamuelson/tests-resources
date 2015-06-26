@@ -14,7 +14,7 @@ window.apiKey;
 
 var keys = {
   staging: 'da388efde809cb227c3d43ab2f170e5a',
-  dev: 'a67c31bc8ce25b2906f20108dee41766',
+  dev: 'ea2c98f3ef6344164fc1ba7d0b7b89cc',
   production: 'ea2c98f3ef6344164fc1ba7d0b7b89cc'
 };
 
