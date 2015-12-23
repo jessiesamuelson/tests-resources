@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+
+  <link rel="stylesheet" href="jquery-ui-timepicker-addon.css">
+  <!-- <link rel="stylesheet" href="jquery-ui.css"> -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/flick/jquery-ui.css">
+
+  
+  <!-- working CDNs -->
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  
+
+  <script src="jquery-ui-timepicker-addon.js"></script>
+  <script src="jquery-ui-sliderAccess.js"></script>
+  
+
+  <script>
+  $(function() {
+    $('#datepicker').datetimepicker({
+      timeFormat: 'HH:mm TT z',
+      timezoneList: [ 
+        { value: -300, label: 'Eastern'}, 
+        { value: -360, label: 'Central' }, 
+        { value: -420, label: 'Mountain' }, 
+        { value: -480, label: 'Pacific' } 
+      ]
+    });
+  });
+  </script>
+</head>
+
+<body>
+  <p>Date: <input type="text" id="datepicker"></p>
+</body>
+</html>

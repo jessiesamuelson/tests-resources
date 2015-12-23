@@ -1,0 +1,21 @@
+#thumb, #canvas {
+  width: 750px;
+  height: 540px;
+}
+#canvas {
+  display: none;
+}
+#grab {
+  width: 50px;
+  height: 20px;
+}
+#thumbnail {
+  width: 375px;
+  height: 270px;
+  border: 1px solid black;
+}
+
+.thumbnail {
+  width: 375px;
+  height: 270px;
+}

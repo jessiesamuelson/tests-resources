@@ -1,0 +1,16 @@
+ul {
+  float: left;
+}
+
+li {
+  list-style: none;
+  border: 1px solid black;
+  margin-top: 3px;
+  padding: 3px;
+}
+li.sort1 {
+  background-color:  #F4B9F5;
+}
+li.sort2 {
+  background-color:  #95DFF5;
+}

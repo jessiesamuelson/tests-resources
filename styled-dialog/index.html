@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Customized Dialog</title>
+  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/flick/jquery-ui.css">
+   
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="script.js"></script>
+
+ 
+<body>
+	<form id="testconfirmJQ" name="testconfirmJQ" method="post">
+		<fieldset>
+			<legend>jQuery UI Modal Submit</legend>
+			 
+			<p><label for="email">E-mail:</label><br />
+			 
+			<input id="emailJQ" type="text" name="emailJQ" value="" /></p>
+			 
+			<p><input type="submit" value="Submit" /></p>
+		 
+		</fieldset>
+	</form>
+	 
+	<div id="dialog" title="Channel Manager">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 0 0;"></span> You entered your e-mail address as:</p>
+		<p id="dialog-email"></p>
+		<p>If this is correct, click Submit Form.</p>
+		<p>To edit, click Cancel.<p>
+	</div>
+
+
+</body>
+</html>

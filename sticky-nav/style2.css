@@ -1,0 +1,54 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+#navbar {
+  width: 100%;
+  position: fixed;
+}
+.nav {
+  float: left;
+  list-style: none;
+  width: 12.5%;
+  height: 2em;
+}
+/*.nav a {
+  color: black;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: .4em;
+}*/
+.nav-1 { background: red;}
+.nav-2 { background: magenta;}
+.nav-3 { background: orange;}
+.nav-4 { background: yellow;}
+.nav-5 { background: green;}
+.nav-6 { background: cyan;}
+.nav-7 { background: blue;}
+.nav-8 { background: purple;}
+
+.nav a {
+  font-size: 16px;
+  display: inline-block;
+  text-decoration: none;
+  float: left;
+  padding: 10px 15px;
+  width: (100%/8);
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .nav a {
+    width: (100%/4);
+  }
+}
+
+
+nav @include breakpoint(narrow-screen){
+  
+}
+nav @include breakpoint(mobile-screen){
+  width: (100%);
+}

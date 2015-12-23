@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Thumbnail selector</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <video id="thumb" controls>
+        <!-- <source src="SampleVideo.mp4" > --> 
+        <!-- <source src="http://techslides.com/demos/sample-videos/small.mp4"> -->
+        <source src="http://localhost:8000/SampleVideo2.mp4">
+    </video>
+    <canvas id="canvas" >
+    </canvas>
+     <button type="button" id="grab">Grab</button>
+    <div id="thumbnail"></div>
+
+    <script src="jquery-1.11.0.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

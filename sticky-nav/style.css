@@ -1,0 +1,30 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+#navbar {
+  width: 100%;
+  position: fixed;
+}
+.nav {
+  float: left;
+  list-style: none;
+  /*width: 12.5%;*/
+  height: 2em;
+}
+.nav a {
+  color: black;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: .4em;
+}
+.nav-1 { background: red;}
+.nav-2 { background: magenta;}
+.nav-3 { background: orange;}
+.nav-4 { background: yellow;}
+.nav-5 { background: green;}
+.nav-6 { background: cyan;}
+.nav-7 { background: blue;}
+.nav-8 { background: purple;}
